@@ -1,12 +1,10 @@
 {
-  "name": "template-wechat",
+  "name": "wx-castrol-oil",
   "version": "1.0.0",
   "description": "webpack building multiple page projects",
   "main": "index.js",
   "scripts": {
-    "dev": "node cmd -d dist -r app=wow::env=dev -p home_index&&webpack --watch --config cmd/webpack.config.js",
-    "test": "node cmd -d dist -r app=wow::env=test -p home_index&&webpack --watch --config ./cmd/webpack.config.js",
-    "build": "node cmd -d dist -r app=wow::env=build -p home_index&&webpack --watch --config ./cmd/webpack.config.js",
+    "start": "node cmd -d dist -p home_index&&webpack --watch --config cmd/webpack.config.js",
     "clear": "node cmd -d dist",
     "router": "node cmd -p home_index",
     "serve": "serve -p 10011"
@@ -25,7 +23,8 @@
   },
   "homepage": "https://github.com/Woshiajuana/wow-wx#readme",
   "dependencies": {
-    "wow-wx": "^0.1.1"
+    "@daysnap/define-sass": "0.0.9",
+    "wow-wx": "^0.1.15"
   },
   "devDependencies": {
     "wow-cmd": "0.0.17",

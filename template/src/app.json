@@ -1,7 +1,16 @@
 {
     "pages": [
         "pages/home/index",
-        "pages/login/index"
+        "pages/care/index",
+        "pages/demo/index",
+        "pages/engine/index",
+        "pages/feedback/index",
+        "pages/history/index",
+        "pages/model/index",
+        "pages/ocr/index",
+        "pages/series/index",
+        "pages/transmission/index",
+        "pages/webview/index"
     ],
     "permission": {
         "scope.userLocation": {
@@ -9,18 +18,9 @@
         }
     },
     "window": {
-        "navigationBarTitleText": "WOW-WX",
+        "navigationBarTitleText": "车养护达人选油助手",
         "navigationBarTextStyle": "black",
         "navigationBarBackgroundColor": "#ffffff"
     },
-    "subpackages": [
-        {
-            "root": "module",
-            "name": "module",
-            "pages": [
-                "home/index",
-                "login/index"
-            ]
-        }
-    ]
+    "subpackages": []
 }

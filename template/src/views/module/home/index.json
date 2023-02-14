@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "分包主页",
-    "usingComponents": {
-        "template-component": "/components/template-component/index",
-        "module-component": "/module/components/module-component/index"
-    }
-}

@@ -6,13 +6,8 @@ const webpack = require('webpack');
 const output = require('wow-cmd').output;
 const cmdPath = process.cwd();
 const { directoryConfig } = require('./config');
-const { name, env, err } = require('./cmdParams.json');
 
-if (err) {
-    throw '无法打包，环境配置发布有误，请检查无误之后再打包';
-}
-
-output.info('webpack.config.js=>', `即将开始【app: ${name} 】【环境: ${env}】打包`);
+output.info('webpack.config.js=>', `即将开始打包`);
 
 let entry = {};
 const {
@@ -63,6 +58,7 @@ const config = {
         alias: {
             'src': path.resolve(__dirname, '../src/'),
             'source': path.resolve(__dirname, '../source/'),
+            'wow-wx-ui': path.resolve(__dirname, '../components/wow-wx-ui/'),
         }
     },
     module: {

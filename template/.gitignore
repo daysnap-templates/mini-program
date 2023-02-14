@@ -1,3 +1,5 @@
 .idea/
-dist/
 node_modules/
+dist/
+UI/
+package-lock.json
