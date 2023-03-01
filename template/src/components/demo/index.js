@@ -5,9 +5,9 @@ import './index.scss'
 import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
-    options: {
-        multipleSlots: true,
-        addGlobalClass: true,
-    },
-    properties: {},
+  options: {
+    multipleSlots: true,
+    addGlobalClass: true,
+  },
+  properties: {},
 })

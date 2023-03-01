@@ -9,28 +9,28 @@ import WowApp from 'wow-wx/lib/app'
 const wowApp = new WowApp()
 
 const formatKey = (key, cut) => {
-    key = key.substring(key.lastIndexOf('/') + 1, key.indexOf(cut))
-    return key.substring(0, 1).toUpperCase() + key.substring(1)
+  key = key.substring(key.lastIndexOf('/') + 1, key.indexOf(cut))
+  return key.substring(0, 1).toUpperCase() + key.substring(1)
 }
 
 WowApp.requireDir(require.context('./mixins', true, /\.mixin\.js$/), (key, value) => {
-    wowApp.use('mixins', formatKey(key, '.mixin'), value.default || value)
+  wowApp.use('mixins', formatKey(key, '.mixin'), value.default || value)
 }).requireDir(require.context('wow-wx/mixins', true, /\.mixin\.js$/), (key, value) => {
-    wowApp.use('mixins', formatKey(key, '.mixin'), value.default || value)
+  wowApp.use('mixins', formatKey(key, '.mixin'), value.default || value)
 })
 
 // 数组降纬 某些微信版本手机没有这个方法
 if (typeof Array.prototype.flat !== 'function') {
-    Array.prototype.flat = function () {
-        return this.reduce((acc, val) => acc.concat(val), [])
-    }
+  Array.prototype.flat = function () {
+    return this.reduce((acc, val) => acc.concat(val), [])
+  }
 }
 
 wowApp.init({
-    onError (msg) {
-        console.log('[APP ERROR] => ',msg)
-    },
-    onPageNotFound () {
-        this.wow$.mixins.Router.routerPush('home_index')
-    },
+  onError(msg) {
+    console.log('[APP ERROR] => ', msg)
+  },
+  onPageNotFound() {
+    this.wow$.mixins.Router.routerPush('home_index')
+  },
 })
