@@ -3,3 +3,4 @@ node_modules/
 dist/
 UI/
 package-lock.json
+src/router.config.js
