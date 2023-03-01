@@ -18,7 +18,7 @@
     }
   },
   "window": {
-    "navigationBarTitleText": "{{ projectName }}",
+    "navigationBarTitleText": "${{ projectName }}",
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#ffffff"
   },

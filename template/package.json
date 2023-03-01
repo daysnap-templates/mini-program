@@ -1,7 +1,7 @@
 {
-  "name": "{{ name }}",
+  "name": "${{ name }}",
   "version": "0.0.1",
-  "description": "{{ description }}",
+  "description": "${{ description }}",
   "main": "index.js",
   "scripts": {
     "start": "node cmd -d dist -p home_index&&webpack --watch --config cmd/webpack.config.js",
@@ -16,8 +16,8 @@
   "keywords": [
     "webpack"
   ],
-  "author": "{{ author }}",
-  "license": "{{ license }}",
+  "author": "${{ author }}",
+  "license": "${{ license }}",
   "bugs": {
     "url": "https://github.com/Woshiajuana/wow-wx/issues"
   },

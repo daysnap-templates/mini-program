@@ -1,6 +1,6 @@
 {
-  "appid": "{{ appid }}",
-  "projectname": "{{ projectName }}",
+  "appid": "${{ appid }}",
+  "projectname": "${{ projectName }}",
   "setting": {
     "checkSiteMap": false
   }
