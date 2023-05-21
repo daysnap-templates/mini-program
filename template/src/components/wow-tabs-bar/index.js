@@ -5,9 +5,7 @@ import './index.scss'
 import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
-  mixins: [
-    WowComponent.wow$.mixins.Input,
-  ],
+  mixins: [WowComponent.wow$.mixins.Input],
   options: {
     multipleSlots: true,
     addGlobalClass: true,
@@ -23,20 +21,20 @@ new WowComponent({
     },
     value: {
       type: Number,
-      value: ''
+      value: '',
     },
     useControl: {
       type: Boolean,
-      value: false
-    }
+      value: false,
+    },
   },
   methods: {
     handleSelect(event) {
-      const {item, index: value} = this.inputParams(event)
+      const { item, index: value } = this.inputParams(event)
       if (!this.data.useControl) {
-        this.setData({value})
+        this.setData({ value })
       }
-      this.triggerEvent('change', {value, option: item})
+      this.triggerEvent('change', { value, option: item })
     },
-  }
+  },
 })

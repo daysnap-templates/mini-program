@@ -16,4 +16,4 @@ new WowComponent({
       value: true,
     },
   },
-});
+})

@@ -2,7 +2,7 @@
 
 export default {
   data: {
-    src$: {}
+    src$: {},
   },
   src(n) {
     return s(n)

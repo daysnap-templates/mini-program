@@ -5,9 +5,7 @@ import './index.scss'
 import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
-  mixins: [
-    WowComponent.wow$.mixins.Input,
-  ],
+  mixins: [WowComponent.wow$.mixins.Input],
   options: {
     multipleSlots: true,
     addGlobalClass: true,
@@ -15,7 +13,7 @@ new WowComponent({
   properties: {
     error: {
       type: String,
-      value: ''
+      value: '',
     },
     errorBtnText: {
       type: String,
@@ -34,4 +32,4 @@ new WowComponent({
       value: '暂无数据~',
     },
   },
-});
+})

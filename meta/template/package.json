@@ -1,7 +1,8 @@
+
 {
-  "name": "mini-program",
+  "name": "${{ name }}",
   "version": "0.0.1",
-  "description": "小程序模板",
+  "description": "${{ description }}",
   "main": "index.js",
   "scripts": {
     "start": "node cmd -d dist -p home_index&&webpack --watch --config cmd/webpack.config.js",
@@ -16,8 +17,8 @@
   "keywords": [
     "webpack"
   ],
-  "author": "ajuan",
-  "license": "MIT",
+  "author": "${{ author }}",
+  "license": "${{ license }}",
   "bugs": {
     "url": "https://github.com/Woshiajuana/wow-wx/issues"
   },
@@ -34,7 +35,6 @@
     "babel-register": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
     "css-loader": "^0.28.9",
-    "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "extract-text-webpack-plugin": "^3.0.2",

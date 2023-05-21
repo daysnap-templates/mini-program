@@ -1,9 +1,10 @@
 export default {
-
   onPullDownRefresh() {
-    this.handleRefresh && this.handleRefresh(() => setTimeout(() => {
-      wx.stopPullDownRefresh();
-    }, 500));
+    this.handleRefresh &&
+      this.handleRefresh(() =>
+        setTimeout(() => {
+          wx.stopPullDownRefresh()
+        }, 500),
+      )
   },
-
 }

@@ -1,10 +1,7 @@
 import InputMixin from 'wow-wx/mixins/wx/input.mixin'
 
 export default {
-
-  mixins: [
-    InputMixin,
-  ],
+  mixins: [InputMixin],
 
   data: {
     pagingIndex: 1,
@@ -24,82 +21,95 @@ export default {
   },
 
   pagingGetUrlParamsOptions() {
-    return {url: '', params: {}, options: {}}
+    return { url: '', params: {}, options: {} }
   },
 
   pagingReqDataList(pagingIndex = 1, loading = false, callback) {
-    this.setData({pagingIsLoading: true})
+    this.setData({ pagingIsLoading: true })
     let {
       url,
       params = {},
       options = {},
-    } = this.pagingGetUrlParamsOptions({pagingIndex})
-    let {
-      pagingSize,
-      pagingData,
-      pagingNumTotal,
-    } = this.data
+    } = this.pagingGetUrlParamsOptions({ pagingIndex })
+    let { pagingSize, pagingData, pagingNumTotal } = this.data
     options = {
       loading: loading && typeof callback !== 'function',
       useError: true,
       ...options,
     }
-    this.curl(url, {
-      PageIndex: pagingIndex,
-      PageSize: pagingSize,
-      ...params,
-    }, options).then((res) => {
-      const {Count: pagingTotal = 0, Data: list = []} = this.pagingFormatResult(res)
-      if (this.pagingCallbackResult) {
-        this.pagingCallbackResult({
-          list,
-          pagingIndex,
-        }, () => {
-          if (pagingIndex === 1) {
-            pagingNumTotal = 0
-            pagingNumTotal += list.length
-          } else {
-            pagingNumTotal += list.length
-          }
-          this.setData({pagingNumTotal, pagingTotal, pagingIndex})
-        })
-        return
-      }
-      if (pagingIndex === 1) {
-        pagingData = []
-        pagingNumTotal = 0
-        pagingNumTotal += list.length
-        pagingData[0] = list
-        this.setData({
-          pagingNumTotal,
-          pagingTotal,
-          pagingData,
-          pagingIndex,
-        })
-      } else {
-        pagingNumTotal += list.length
-        this.setData({
-          pagingNumTotal,
-          pagingTotal,
-          pagingIndex,
-          [`pagingData[${pagingIndex - 1}]`]: list
-        })
-      }
-    }).toast().finally(() => {
-      typeof callback === 'function' && callback()
-      this.setData({pagingIsLoading: false})
-    })
+    this.curl(
+      url,
+      {
+        PageIndex: pagingIndex,
+        PageSize: pagingSize,
+        ...params,
+      },
+      options,
+    )
+      .then((res) => {
+        const { Count: pagingTotal = 0, Data: list = [] } =
+          this.pagingFormatResult(res)
+        if (this.pagingCallbackResult) {
+          this.pagingCallbackResult(
+            {
+              list,
+              pagingIndex,
+            },
+            () => {
+              if (pagingIndex === 1) {
+                pagingNumTotal = 0
+                pagingNumTotal += list.length
+              } else {
+                pagingNumTotal += list.length
+              }
+              this.setData({ pagingNumTotal, pagingTotal, pagingIndex })
+            },
+          )
+          return
+        }
+        if (pagingIndex === 1) {
+          pagingData = []
+          pagingNumTotal = 0
+          pagingNumTotal += list.length
+          pagingData[0] = list
+          this.setData({
+            pagingNumTotal,
+            pagingTotal,
+            pagingData,
+            pagingIndex,
+          })
+        } else {
+          pagingNumTotal += list.length
+          this.setData({
+            pagingNumTotal,
+            pagingTotal,
+            pagingIndex,
+            [`pagingData[${pagingIndex - 1}]`]: list,
+          })
+        }
+      })
+      .toast()
+      .finally(() => {
+        typeof callback === 'function' && callback()
+        this.setData({ pagingIsLoading: false })
+      })
   },
 
   pagingFormatResult(res) {
     if (Array.isArray(res)) {
-      res = {Count: res.length, Data: res}
+      res = { Count: res.length, Data: res }
     }
     return res
   },
 
   pagingLoad() {
-    const {pagingTotal, pagingData, pagingNumTotal, pagingIsLoading, pagingIndex} = this.data
+    const {
+      pagingTotal,
+      pagingData,
+      pagingNumTotal,
+      pagingIsLoading,
+      pagingIndex,
+    } = this.data
     if (pagingIsLoading) {
       return console.log('正在加载中...')
     }
@@ -108,5 +118,4 @@ export default {
     }
     this.pagingReqDataList(pagingIndex + 1)
   },
-
 }

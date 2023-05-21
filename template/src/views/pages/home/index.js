@@ -6,8 +6,5 @@ import './index.wxml'
 import WowPage from 'wow-wx/lib/page'
 
 new WowPage({
-  mixins: [
-    WowPage.wow$.mixins.Router,
-  ],
+  mixins: [WowPage.wow$.mixins.Router],
 })
-

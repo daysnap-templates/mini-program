@@ -1,18 +1,18 @@
-import {s} from 'src/mixins/src.mixin'
+import { s } from 'src/mixins/src.mixin'
 
-const config = {};
+const config = {}
 
 for (let k in config) {
-  let item = config[k];
+  let item = config[k]
   if (item.options) {
-    const valueByKey = {};
-    const labelByValue = {};
-    item.options.forEach(it => {
-      let {key, label, value} = it;
-      valueByKey[key] = value;
-      labelByValue[value] = label;
-    });
-    Object.assign(item, {valueByKey, labelByValue});
+    const valueByKey = {}
+    const labelByValue = {}
+    item.options.forEach((it) => {
+      let { key, label, value } = it
+      valueByKey[key] = value
+      labelByValue[value] = label
+    })
+    Object.assign(item, { valueByKey, labelByValue })
   }
 }
 

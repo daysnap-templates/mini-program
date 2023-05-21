@@ -12,11 +12,11 @@ new WowComponent({
   properties: {
     height: {
       type: String,
-      value: '0'
+      value: '0',
     },
     padding: {
       type: String,
-      value: '0'
-    }
+      value: '0',
+    },
   },
 })

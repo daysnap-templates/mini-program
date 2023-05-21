@@ -1,52 +1,62 @@
 function filterDate(v, format) {
   if (!format) {
-    format = "yyyy-MM-dd hh:mm:ss";
+    format = 'yyyy-MM-dd hh:mm:ss'
   }
   if (typeof v === 'string') {
+    // eslint-disable-next-line no-undef
     v = v.replace(getRegExp('-', 'g'), '/')
   }
-  var realDate = getDate(v);
+  // eslint-disable-next-line no-undef
+  var realDate = getDate(v)
 
   function timeFormat(num) {
-    return num < 10 ? '0' + num : num;
+    return num < 10 ? '0' + num : num
   }
 
   var date = [
-    ["M+", timeFormat(realDate.getMonth() + 1)],
-    ["d+", timeFormat(realDate.getDate())],
-    ["h+", timeFormat(realDate.getHours())],
-    ["m+", timeFormat(realDate.getMinutes())],
-    ["s+", timeFormat(realDate.getSeconds())],
-    ["q+", Math.floor((realDate.getMonth() + 3) / 3)],
-    ["S+", realDate.getMilliseconds()],
-  ];
-  var reg1 = getRegExp("(y+)", "i").exec(format);
+    ['M+', timeFormat(realDate.getMonth() + 1)],
+    ['d+', timeFormat(realDate.getDate())],
+    ['h+', timeFormat(realDate.getHours())],
+    ['m+', timeFormat(realDate.getMinutes())],
+    ['s+', timeFormat(realDate.getSeconds())],
+    ['q+', Math.floor((realDate.getMonth() + 3) / 3)],
+    ['S+', realDate.getMilliseconds()],
+  ]
+  // eslint-disable-next-line no-undef
+  var reg1 = getRegExp('(y+)', 'i').exec(format)
   if (reg1) {
-
-    format = format.replace(reg1[1], (realDate.getFullYear() + '').substring(4 - reg1[1].length));
+    format = format.replace(
+      reg1[1],
+      (realDate.getFullYear() + '').substring(4 - reg1[1].length),
+    )
   }
   for (var i = 0; i < date.length; i++) {
-    var k = date[i][0];
-    var v = date[i][1];
+    var k = date[i][0]
+    // eslint-disable-next-line no-redeclare
+    var v = date[i][1]
 
-    var reg2 = getRegExp("(" + k + ")").exec(format);
+    // eslint-disable-next-line no-undef
+    var reg2 = getRegExp('(' + k + ')').exec(format)
     if (reg2) {
-      format = format.replace(reg2[1], reg2[1].length == 1
-        ? v : ("00" + v).substring(("" + v).length));
+      format = format.replace(
+        reg2[1],
+        reg2[1].length == 1 ? v : ('00' + v).substring(('' + v).length),
+      )
     }
   }
-  return format;
+  return format
 }
 
 function filterTime(date, fmt) {
-  if (!date) return '--/--/--';
-  date = date.replace(getRegExp("[^0-9-]", "ig"), '');
-  return filterDate(+date, fmt || 'yyyy-MM-dd');
+  if (!date) return '--/--/--'
+  // eslint-disable-next-line no-undef
+  date = date.replace(getRegExp('[^0-9-]', 'ig'), '')
+  return filterDate(+date, fmt || 'yyyy-MM-dd')
 }
 
 module.exports = {
   source: function (src) {
-    return src ? 'https://xxx.com/images/v2/' + src : '';
+    return src ? 'https://xxx.com/images/v2/' + src : ''
   },
   filterDate: filterDate,
   filterTime: filterTime,
@@ -61,4 +71,4 @@ module.exports = {
     }
     return data.indexOf(value) > -1
   },
-};
+}

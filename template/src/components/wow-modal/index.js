@@ -5,9 +5,7 @@ import './index.scss'
 import WowComponent from 'wow-wx/lib/component'
 
 new WowComponent({
-  mixins: [
-    WowComponent.wow$.mixins.Input,
-  ],
+  mixins: [WowComponent.wow$.mixins.Input],
   options: {
     multipleSlots: true,
     addGlobalClass: true,
@@ -19,7 +17,7 @@ new WowComponent({
   properties: {
     classes: {
       type: String,
-      value: ''
+      value: '',
     },
     overlayClose: {
       type: Boolean,
@@ -47,7 +45,7 @@ new WowComponent({
     },
     showCancel: {
       type: Boolean,
-      value: true
+      value: true,
     },
   },
   methods: {
@@ -60,7 +58,7 @@ new WowComponent({
       return new Promise((resolve, reject) => {
         this.resolve = resolve
         this.reject = reject
-        this.setData({visible: true, ...options})
+        this.setData({ visible: true, ...options })
       })
     },
     hide(forced) {
@@ -68,7 +66,7 @@ new WowComponent({
         return this.data.beforeClose('cancel', () => this.hide(true))
       }
       if (this.reject) this.reject()
-      this.setData({visible: false})
+      this.setData({ visible: false })
       this.triggerEvent('cancel')
     },
     handleConfirm(event) {
@@ -84,7 +82,7 @@ new WowComponent({
         this.resolve(data)
       }
       this.triggerEvent('confirm', data)
-      this.setData({visible: false})
-    }
+      this.setData({ visible: false })
+    },
   },
-});
+})
