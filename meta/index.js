@@ -52,9 +52,9 @@ module.exports = {
     //     }
     //   })
     // }
-    configureFilter: {
-        '.eslintrc.js': 'lintConfig.includes("eslint")',
-    },
+    // configureFilter: {
+    //     '.eslintrc.js': 'lintConfig.includes("eslint")',
+    // },
 
     // 完成
     complete: (data, {chalk}) => {
