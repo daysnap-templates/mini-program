@@ -1,5 +1,3 @@
-import { s } from 'src/mixins/src.mixin'
-
 const config = {}
 
 for (let k in config) {

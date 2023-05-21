@@ -48,7 +48,7 @@ new WowComponent({
       }, 100)
     },
     handleTouchStart(event) {
-      let { isRefresh, numY } = this.data
+      let { isRefresh } = this.data
       if (isRefresh) return null
       let [objStart] = event.touches
       if (objStart) this.startClientY = objStart.clientY

@@ -1,4 +1,4 @@
-// export const s = n => ``
+export const s = (n) => n
 
 export default {
   data: {

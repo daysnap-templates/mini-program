@@ -131,12 +131,14 @@ export default {
 }
 
 function gotoLogin() {
+  // eslint-disable-next-line no-undef
   const app = getApp()
   // 防止多个接口触发此方法 pages/mine/index
   if (app.goToLoginPageLock) return
   app.goToLoginPageLock = true
   setTimeout(() => (app.goToLoginPageLock = false), 3000) // 3s 之后恢复
   setTimeout(() => {
+    // eslint-disable-next-line no-undef
     const pages = getCurrentPages()
     const { route } = pages[pages.length - 1] || {}
     // 如果已经进入到了登录页面，则无需执行后续操作
